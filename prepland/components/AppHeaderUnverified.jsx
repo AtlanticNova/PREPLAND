@@ -8,22 +8,20 @@ import {
   Text,
   Menu,
   Divider,
-  Tabs,
   Burger,
 	Image,
 } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
 import {
-  Logout,
+  Login,
   Heart,
   Star,
   Message,
   Settings,
-  PlayerPause,
-  Trash,
   SwitchHorizontal,
   ChevronDown,
 } from 'tabler-icons-react';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -94,8 +92,6 @@ export default function HeaderTabs({ user, tabs }) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
-  const items = tabs.map((tab) => <Tabs.Tab label={tab} key={tab} />);
-
   return (
     <div className={classes.header}>
       <Container className={classes.mainSection}>
@@ -151,30 +147,11 @@ export default function HeaderTabs({ user, tabs }) {
             <Menu.Label>Settings</Menu.Label>
             <Menu.Item icon={<Settings size={14} />}>Account settings</Menu.Item>
             <Menu.Item icon={<SwitchHorizontal size={14} />}>Change account</Menu.Item>
-            <Menu.Item icon={<Logout size={14} />}>Logout</Menu.Item>
-
-            
-
-            <Menu.Label>Danger zone</Menu.Label>
-            <Menu.Item icon={<PlayerPause size={14} />}>Pause subscription</Menu.Item>
-            <Menu.Item color="red" icon={<Trash size={14} />}>
-              Delete account
-            </Menu.Item>
+            <Link href="/register" passHref>
+						<Menu.Item icon={<Login size={14} />}>Login</Menu.Item>
+						</Link>
           </Menu>
         </Group>
-      </Container>
-      <Container>
-        <Tabs
-          variant="outline"
-          classNames={{
-            root: classes.tabs,
-            tabsListWrapper: classes.tabsList,
-            tabControl: classes.tabControl,
-            tabActive: classes.tabControlActive,
-          }}
-        >
-          {items}
-        </Tabs>
       </Container>
     </div>
   );
