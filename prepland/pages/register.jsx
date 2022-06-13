@@ -1,94 +1,82 @@
 import React from 'react';
-import { useForm, useToggle, upperFirst } from '@mantine/hooks';
 import {
 	TextInput,
 	PasswordInput,
-	Text,
-	Paper,
-	Group,
-	PaperProps,
-	Button,
-	Divider,
-	Checkbox,
 	Anchor,
+	Paper,
+	Title,
+	Text,
+	Container,
+	Button,
+	form,
 } from '@mantine/core';
+import Link from 'next/link';
 
-export default function AuthenticationForm(PaperProps) {
-	const [type, toggle] = useToggle('login', ['login', 'register']);
-	const form = useForm({
-		initialValues: {
-			email: '',
-			name: '',
-			password: '',
-			terms: true,
-		},
-
-		validationRules: {
-			email: (val) => /^\S+@\S+$/.test(val),
-			password: (val) => val.length >= 6,
-		},
-	});
-
+export default function Register() {
 	return (
-		<Paper radius="md" p="xl" withBorder {...props}>
-			<Text size="lg" weight={500}>
-				Welcome to Mantine, {type} with
+		<Container size={500} my={40}>
+			<Title
+				align="center"
+				sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
+			>
+				Welcome back!
+			</Title>
+
+			<Text color="dimmed" size="sm" align="center" mt={5}>
+
+				Already have an account yet?{' '}
+
+				<Link href="/login" passHref>
+					<Anchor size="sm">
+						Login
+					</Anchor>
+				</Link>
+
 			</Text>
 
-			<Group grow mb="md" mt="md">
-				<GoogleButton radius="xl">Google</GoogleButton>
-				<TwitterButton radius="xl">Twitter</TwitterButton>
-			</Group>
-
-			<Divider label="Or continue with email" labelPosition="center" my="lg" />
-
-			<form onSubmit={form.onSubmit(() => { })}>
-				<Group direction="column" grow>
-					{type === 'register' && (
-						<TextInput
-							label="Name"
-							placeholder="Your name"
-							value={form.values.name}
-							onChange={(event) => form.setFieldValue('name', event.currentTarget.value)}
-						/>
-					)}
+			<Paper withBorder shadow="md" p={30} mt={30} radius="md">
+				<form>
 
 					<TextInput
+						label="Username"
+						placeholder="username"
+						size="md"
 						required
-						label="Email"
-						placeholder="hello@mantine.dev"
-						value={form.values.email}
-						onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
-						error={form.errors.email && 'Invalid email'}
 					/>
+					<Text size="sm" color="dimmed">Username must unique</Text>
+
+					<TextInput
+						label="Email"
+						placeholder="username or your@email.com"
+						mt="md"
+						size="md"
+						required
+					/>
+					<Text size="sm" color="dimmed">Input a valid email address</Text>
 
 					<PasswordInput
-						required
 						label="Password"
-						placeholder="Your password"
-						value={form.values.password}
-						onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
-						error={form.errors.password && 'Password should include at least 6 characters'}
+						placeholder="password"
+						mt="md"
+						size="md"
+						required
 					/>
+					<Text size="sm" color="dimmed">Password must contain at least 8 characters including an uppercase letter, a symbol, and a number</Text>
 
-					{type === 'register' && (
-						<Checkbox
-							label="I accept terms and conditions"
-							checked={form.values.terms}
-							onChange={(event) => form.setFieldValue('terms', event.currentTarget.checked)}
-						/>
-					)}
-				</Group>
-
-				<Group position="apart" mt="xl">
-					<Anchor component="button" type="button" color="gray" onClick={() => toggle()} size="xs">
-						{type === 'register'
-							? 'Already have an account? Login'
-							: "Don't have an account? Register"}
-					</Anchor>
-					<Button type="submit">{upperFirst(type)}</Button>
-				</Group>
-			</form>
-		</Paper>
+					<PasswordInput
+						label="Repeat password"
+						placeholder="repeat password"
+						mt="md"
+						size="md"
+						required
+					/>
+				</form>
+				<Link href="/home" passHref>
+					<Button fullWidth mt="xl">
+						REGISTER
+					</Button>
+				</Link>
+			</Paper >
+		</Container >
 	);
 }
