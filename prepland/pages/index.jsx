@@ -1,13 +1,13 @@
 import React from 'react';
-import { Title, Text, Container, Button, Overlay, createStyles } from '@mantine/core';
+import { Title, Text, Container, Button, Overlay, createStyles, Tabs } from '@mantine/core';
 import Link from 'next/link';
-import HeaderTabs from '../components/AppHeader';
+import HeaderTabs from '../components/AppHeaderUnverified';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
     position: 'relative',
-    paddingTop: 303,
-    paddingBottom: 300,
+    paddingTop: 320,
+    paddingBottom: 320,
     backgroundImage:
       'url(https://images.unsplash.com/photo-1591189863430-ab87e120f312?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
     backgroundSize: 'cover',
@@ -93,36 +93,40 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const user = {  
-  name: 'Martinus Andika Novanawa',
-  email: 'martinus.novanawa@binus.ac.id',
-  image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80',
+const user = {
+  name: 'username',
+  email: '',
+  image: '',
 }
 const tabs = ['Home', 'Meal Plan', 'Grocery List', 'Price List', 'Article', 'News'];
 
-export default function HeroImageBackground() {
+export default function HeroBackground() {
   const { classes, cx } = useStyles();
 
   return (
     <div>
-      <HeaderTabs user={user} tabs={tabs}/>
+      <HeaderTabs user={user}>
+      <Link href="/home" passHref>
+        <Tabs.Tab></Tabs.Tab>
+      </Link>
+      </HeaderTabs>
       <div className={classes.wrapper}>
-      <Overlay color="#000" opacity={0.65} zIndex={1} />
+        <Overlay color="#000" opacity={0.65} zIndex={1} />
 
-      <div className={classes.inner}>
-        <Title className={classes.title}>
-          Automated AI code reviews for{' '}
-          <Text component="span" inherit className={classes.highlight}>
-            any stack
-          </Text>
-        </Title>
+        <div className={classes.inner}>
+          <Title className={classes.title}>
+            Automated AI code reviews for{' '}
+            <Text component="span" inherit className={classes.highlight}>
+              any stack
+            </Text>
+          </Title>
 
-        <Container size={640}>
-          <Text size="lg" className={classes.description}>
-            Build more reliable software with AI companion. AI is also trained to detect lazy
-            developers who do nothing and just complain on Twitter.
-          </Text>
-        </Container>
+          <Container size={640}>
+            <Text size="lg" className={classes.description}>
+              Build more reliable software with AI companion. AI is also trained to detect lazy
+              developers who do nothing and just complain on Twitter.
+            </Text>
+          </Container>
 
           <div className={classes.controls}>
             <Link href="/register" passHref>
@@ -130,8 +134,8 @@ export default function HeroImageBackground() {
                 Get started
               </Button>
             </Link>
-            
-            <Link href="/video" passHref>
+
+            <Link href="https://youtube.com" passHref>
               <Button className={cx(classes.control, classes.secondaryControl)} size="lg">
                 Live demo
               </Button>
