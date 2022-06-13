@@ -10,7 +10,7 @@ import {
   Divider,
   Tabs,
   Burger,
-	Image,
+  Image,
 } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
 import {
@@ -24,6 +24,7 @@ import {
   SwitchHorizontal,
   ChevronDown,
 } from 'tabler-icons-react';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -100,15 +101,15 @@ export default function HeaderTabs({ user, tabs }) {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-					<div style={{ display: 'flex' }}>
-					<Image
-						radius="md"
-						src="/PreplandLogo.png"
-						alt="Random unsplash image"
-						width={ 25 }
-					/>
-					<Text color={ 'white' } weight='700'>PREPLAND</Text>
-					</div>
+          <div style={{ display: 'flex' }}>
+            <Image
+              radius="md"
+              src="/PreplandLogo.png"
+              alt="Random unsplash image"
+              width={25}
+            />
+            <Text color={'white'} weight='700'>PREPLAND</Text>
+          </div>
           <Burger
             opened={opened}
             onClick={() => toggleOpened()}
@@ -151,10 +152,9 @@ export default function HeaderTabs({ user, tabs }) {
             <Menu.Label>Settings</Menu.Label>
             <Menu.Item icon={<Settings size={14} />}>Account settings</Menu.Item>
             <Menu.Item icon={<SwitchHorizontal size={14} />}>Change account</Menu.Item>
-            <Menu.Item icon={<Logout size={14} />}>Logout</Menu.Item>
-
-            
-
+            <Link href="/" passHref>
+              <Menu.Item icon={<Logout size={14} />}>Logout</Menu.Item>
+            </Link>
             <Menu.Label>Danger zone</Menu.Label>
             <Menu.Item icon={<PlayerPause size={14} />}>Pause subscription</Menu.Item>
             <Menu.Item color="red" icon={<Trash size={14} />}>
