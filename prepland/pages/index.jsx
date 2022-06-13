@@ -100,7 +100,7 @@ const user = {
 }
 const tabs = ['Home', 'Meal Plan', 'Grocery List', 'Price List', 'Article', 'News'];
 
-export default function HeroBackground() {
+export default function Index() {
   const { classes, cx } = useStyles();
 
   return (
