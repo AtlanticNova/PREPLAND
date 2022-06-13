@@ -1,5 +1,6 @@
 import React from 'react';
 import { Title, Text, Container, Button, Overlay, createStyles } from '@mantine/core';
+import Link from 'next/link';
 import HeaderTabs from '../components/AppHeader';
 
 const useStyles = createStyles((theme) => ({
