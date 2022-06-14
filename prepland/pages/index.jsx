@@ -6,7 +6,7 @@ import HeaderTabs from '../components/AppHeaderUnverified';
 const useStyles = createStyles((theme) => ({
   wrapper: {
     position: 'relative',
-    paddingTop: 320,
+    paddingTop: 323,
     paddingBottom: 320,
     backgroundImage:
       'url(https://images.unsplash.com/photo-1591189863430-ab87e120f312?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
@@ -102,7 +102,6 @@ const tabs = ['Home', 'Meal Plan', 'Grocery List', 'Price List', 'Article', 'New
 
 export default function Index() {
   const { classes, cx } = useStyles();
-
   return (
     <div>
       <HeaderTabs user={user}>
@@ -115,17 +114,17 @@ export default function Index() {
 
         <div className={classes.inner}>
           <Title className={classes.title}>
-            Automated AI code reviews for{' '}
+          Your personal meal prepping discoveries{' '}
             <Text component="span" inherit className={classes.highlight}>
-              any stack
+            delivery to you
             </Text>
           </Title>
 
           <Container size={640}>
             <Text size="lg" className={classes.description}>
-              Build more reliable software with AI companion. AI is also trained to detect lazy
-              developers who do nothing and just complain on Twitter.
+            We're still on your browser for a while, but we'll get into your smartphone soon always support PREPLAND to keep us growing
             </Text>
+            <Text className={classes.description}>❤️❤️❤️</Text>
           </Container>
 
           <div className={classes.controls}>
